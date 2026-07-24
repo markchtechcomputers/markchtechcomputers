@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fire Wax Effect - Celebration</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🌟 Manlung Celebration</title>
     <style>
         * {
             margin: 0;
@@ -14,223 +14,422 @@
         body {
             width: 100%;
             height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%);
-            font-family: 'Arial', sans-serif;
             overflow: hidden;
+            background: radial-gradient(ellipse at center, #0b0b1a 0%, #030308 100%);
+            font-family: 'Segoe UI', Arial, sans-serif;
+            user-select: none;
         }
 
         .container {
             position: relative;
             width: 100%;
             height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        .fire-wax-container {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+        /* ===== FIRE WAX CORE ===== */
+        .core-wrapper {
+            position: relative;
             z-index: 100;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            pointer-events: none;
         }
 
-        .center-point {
-            width: 40px;
-            height: 40px;
-            background: radial-gradient(circle, #ffff00, #ffd700, #ff6b35);
+        .core {
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle at 35% 30%, #ffffff, #ffff00 25%, #ff6b35 55%, #cc2200);
             border-radius: 50%;
-            box-shadow: 0 0 40px #ffff00, 0 0 80px #ffd700, 0 0 120px #ff6b35;
-            animation: pulse-glow 0.5s ease-in-out infinite;
+            box-shadow:
+                0 0 60px #ffff00,
+                0 0 100px #ffd700,
+                0 0 150px #ff6b35,
+                0 0 250px rgba(255, 80, 20, 0.4);
+            animation: corePulse 0.8s ease-in-out infinite;
+            position: relative;
         }
 
-        @keyframes pulse-glow {
-            0%, 100% {
-                box-shadow: 0 0 40px #ffff00, 0 0 80px #ffd700, 0 0 120px #ff6b35;
-                transform: scale(1);
-            }
-            50% {
-                box-shadow: 0 0 60px #ffff00, 0 0 100px #ffd700, 0 0 150px #ff6b35;
-                transform: scale(1.1);
-            }
+        /* wax drips */
+        .core::before {
+            content: '';
+            position: absolute;
+            bottom: -55px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 8px;
+            height: 55px;
+            background: linear-gradient(to bottom, #ff6b35, #ff4500);
+            border-radius: 0 0 50% 50%;
+            opacity: 0.5;
+            animation: drip 1.8s ease-in-out infinite;
+        }
+        .core::after {
+            content: '';
+            position: absolute;
+            bottom: -40px;
+            left: 28%;
+            width: 5px;
+            height: 40px;
+            background: linear-gradient(to bottom, #ffd700, #ff6b35);
+            border-radius: 0 0 50% 50%;
+            opacity: 0.4;
+            animation: drip 2.2s ease-in-out infinite 0.6s;
         }
 
+        .drip-extra {
+            position: absolute;
+            bottom: -48px;
+            left: 72%;
+            width: 6px;
+            height: 48px;
+            background: linear-gradient(to bottom, #ff8c00, #cc2200);
+            border-radius: 0 0 50% 50%;
+            opacity: 0.4;
+            animation: drip 2.0s ease-in-out infinite 1.2s;
+        }
+
+        /* flame flicker on top */
+        .flame-tip {
+            position: absolute;
+            top: -35px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 10px;
+            height: 35px;
+            background: linear-gradient(to top, #ff6b35, #ffff00, #ffffff);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            box-shadow: 0 0 30px #ff6b35, 0 0 60px #ffd700;
+            animation: flicker 0.3s ease-in-out infinite alternate;
+        }
+
+        @keyframes corePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.06); }
+        }
+
+        @keyframes drip {
+            0%, 100% { transform: translateX(-50%) scaleY(1); opacity: 0.5; }
+            50% { transform: translateX(-50%) scaleY(1.6); opacity: 0.15; }
+        }
+
+        @keyframes flicker {
+            0% { transform: translateX(-50%) scaleY(1) rotate(-3deg); }
+            100% { transform: translateX(-50%) scaleY(0.8) rotate(3deg); }
+        }
+
+        /* ===== CELEBRATION TEXT ===== */
         .celebration-text {
+            text-align: center;
+            margin-top: 130px;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .brand {
+            font-size: 4.8rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ffd700, #ff6b35, #ff4500, #ffd700);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 3s ease-in-out infinite;
+            text-shadow: none;
+            filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.3));
+            letter-spacing: 6px;
+        }
+
+        .subtitle {
+            color: #ffed4e;
+            font-size: 1.6rem;
+            text-shadow: 0 0 20px #ff6b35, 0 0 40px #ffa500;
+            margin-top: 10px;
+            letter-spacing: 4px;
+            animation: textFloat 2.4s ease-in-out infinite 0.4s;
+        }
+
+        .tagline {
+            color: rgba(255, 215, 0, 0.6);
+            font-size: 1rem;
+            letter-spacing: 8px;
+            margin-top: 16px;
+            text-transform: uppercase;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        @keyframes textFloat {
+            0%, 100% { transform: translateY(0); opacity: 1; }
+            50% { transform: translateY(-6px); opacity: 0.85; }
+        }
+
+        /* ===== RINGS ===== */
+        .rings {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            text-align: center;
-            z-index: 10;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             pointer-events: none;
-            margin-top: 150px;
         }
 
-        h1 {
-            color: #ffd700;
-            font-size: 3em;
-            text-shadow: 0 0 10px #ff6b35, 0 0 20px #ffd700;
-            margin-bottom: 10px;
-            animation: pulse 1.5s ease-in-out infinite;
+        .ring-glow {
+            position: absolute;
+            border: 2px solid rgba(255, 215, 0, 0.06);
+            border-radius: 50%;
+            animation: ringExpand 4s ease-out infinite;
+        }
+        .ring-glow:nth-child(2) { animation-delay: 1.3s; }
+        .ring-glow:nth-child(3) { animation-delay: 2.6s; }
+        .ring-glow:nth-child(4) { animation-delay: 0.6s; border-color: rgba(255, 100, 50, 0.05); }
+
+        @keyframes ringExpand {
+            0% { width: 80px; height: 80px; opacity: 0.6; }
+            100% { width: 600px; height: 600px; opacity: 0; }
         }
 
-        p {
-            color: #ffed4e;
-            font-size: 1.2em;
-            text-shadow: 0 0 5px #ff6b35;
-        }
-
-        @keyframes pulse {
-            0%, 100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.05);
-            }
-        }
-
-        .sparkle {
+        /* ===== SHOOTING STAR ===== */
+        .shooting-star {
             position: fixed;
             pointer-events: none;
+            z-index: 9999;
             border-radius: 50%;
+            background: white;
+            box-shadow: 0 0 20px #fff, 0 0 40px #ffd700;
         }
 
-        .sparkle-burst {
+        .star-trail {
             position: fixed;
-            top: 50%;
-            left: 50%;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
             pointer-events: none;
+            z-index: 9998;
+            height: 3px;
+            border-radius: 2px;
+            background: linear-gradient(to right, rgba(255, 215, 0, 0.8), transparent);
+            transform-origin: left center;
+        }
+
+        /* ===== SPARKLE BURST ===== */
+        .sparkle-particle {
+            position: fixed;
+            pointer-events: none;
+            z-index: 9997;
+            border-radius: 50%;
         }
     </style>
 </head>
 <body>
+
     <div class="container">
-        <div class="fire-wax-container">
-            <div class="center-point"></div>
+        <!-- Rings -->
+        <div class="rings">
+            <div class="ring-glow"></div>
+            <div class="ring-glow"></div>
+            <div class="ring-glow"></div>
+            <div class="ring-glow"></div>
         </div>
 
-        <div class="celebration-text">
-            <h1>🎉 CELEBRATION 🎉</h1>
-            <p>Something Amazing Just Happened!</p>
+        <!-- Core Fire Wax -->
+        <div class="core-wrapper">
+            <div class="core">
+                <div class="flame-tip"></div>
+                <div class="drip-extra"></div>
+            </div>
+
+            <div class="celebration-text">
+                <div class="brand">✦ MANLUNG ✦</div>
+                <div class="subtitle">🎉 CELEBRATION 🎉</div>
+                <div class="tagline">✦ Shooting Stars · Fire Wax ✦</div>
+            </div>
         </div>
     </div>
 
     <script>
-        const colors = ['#ffff00', '#ffd700', '#ff6b35', '#ff4500', '#ffed4e', '#ffa500', '#ff1493', '#00ff00', '#00ffff'];
-        
-        function createSparkle(x, y, vx, vy, size, color, duration) {
-            const sparkle = document.createElement('div');
-            sparkle.className = 'sparkle';
-            sparkle.style.left = x + 'px';
-            sparkle.style.top = y + 'px';
-            sparkle.style.width = size + 'px';
-            sparkle.style.height = size + 'px';
-            sparkle.style.background = color;
-            sparkle.style.boxShadow = `0 0 ${size * 2}px ${color}`;
-            document.body.appendChild(sparkle);
+        // ========== CONFIG ==========
+        const COLORS = [
+            '#ffff00', '#ffd700', '#ff6b35', '#ff4500',
+            '#ffed4e', '#ffa500', '#ff1493', '#00ffcc',
+            '#00ddff', '#ff66ff', '#ff3333', '#ffcc00',
+            '#ff8800', '#ffaa44'
+        ];
 
-            let currentX = x;
-            let currentY = y;
-            let currentVX = vx;
-            let currentVY = vy;
-            const gravity = 0.1;
+        // ========== SHOOTING STAR ==========
+        function createShootingStar() {
+            const w = window.innerWidth;
+            const h = window.innerHeight;
+            const cx = w / 2;
+            const cy = h / 2;
+
+            // start from random edge, biased toward center
+            const angleBase = Math.random() * Math.PI * 2;
+            const dist = 50 + Math.random() * 300;
+            const startX = cx + Math.cos(angleBase) * dist;
+            const startY = cy + Math.sin(angleBase) * dist;
+
+            // direction: outward from center with randomness
+            const angle = Math.atan2(startY - cy, startX - cx) + (Math.random() - 0.5) * 0.6;
+            const speed = 12 + Math.random() * 22;
+
+            const vx = Math.cos(angle) * speed;
+            const vy = Math.sin(angle) * speed;
+
+            const size = 4 + Math.random() * 10;
+            const color = COLORS[Math.floor(Math.random() * COLORS.length)];
+            const duration = 900 + Math.random() * 800;
+
+            let x = startX, y = startY;
+            let cvx = vx, cvy = vy;
+            const gravity = 0.03;
             const startTime = Date.now();
 
+            // ---- Star ----
+            const star = document.createElement('div');
+            star.className = 'shooting-star';
+            star.style.width = size + 'px';
+            star.style.height = size + 'px';
+            star.style.background = color;
+            star.style.boxShadow = `0 0 ${size * 4}px ${color}, 0 0 ${size * 8}px ${color}`;
+            star.style.left = x + 'px';
+            star.style.top = y + 'px';
+            document.body.appendChild(star);
+
+            // ---- Trail ----
+            const trail = document.createElement('div');
+            trail.className = 'star-trail';
+            trail.style.background = `linear-gradient(to right, ${color}, transparent)`;
+            trail.style.height = (size * 0.5) + 'px';
+            trail.style.left = x + 'px';
+            trail.style.top = y + 'px';
+            document.body.appendChild(trail);
+
+            // ---- Animate ----
             function animate() {
                 const elapsed = Date.now() - startTime;
                 if (elapsed > duration) {
-                    sparkle.remove();
+                    star.remove();
+                    trail.remove();
                     return;
                 }
 
-                currentVY += gravity;
-                currentX += currentVX;
-                currentY += currentVY;
+                cvy += gravity;
+                x += cvx;
+                y += cvy;
 
-                // Fade out
-                const opacity = 1 - (elapsed / duration);
-                sparkle.style.opacity = opacity;
-                sparkle.style.left = currentX + 'px';
-                sparkle.style.top = currentY + 'px';
+                const progress = elapsed / duration;
+                const opacity = 1 - progress * 1.2;
+                const scale = 1 + progress * 2.5;
+
+                star.style.left = x + 'px';
+                star.style.top = y + 'px';
+                star.style.opacity = Math.max(0, opacity);
+                star.style.transform = `scale(${scale}) rotate(${elapsed * 0.08}deg)`;
+
+                const dx = cvx * 10;
+                const dy = cvy * 10;
+                const trailLen = Math.min(140, Math.sqrt(dx * dx + dy * dy) * 2.8);
+                const angleRad = Math.atan2(dy, dx);
+
+                trail.style.width = trailLen + 'px';
+                trail.style.left = x + 'px';
+                trail.style.top = y + 'px';
+                trail.style.transform = `rotate(${angleRad}rad)`;
+                trail.style.opacity = Math.max(0, opacity * 0.6);
 
                 requestAnimationFrame(animate);
             }
             animate();
-        }
 
-        function createBurst() {
-            const centerX = window.innerWidth / 2;
-            const centerY = window.innerHeight / 2;
-            
-            // Number of sparkles in burst
-            const sparkleCount = 150;
-            
-            for (let i = 0; i < sparkleCount; i++) {
-                const angle = (Math.PI * 2 * i) / sparkleCount;
-                const speed = 8 + Math.random() * 15;
-                const vx = Math.cos(angle) * speed;
-                const vy = Math.sin(angle) * speed;
-                
-                const size = 2 + Math.random() * 6;
-                const color = colors[Math.floor(Math.random() * colors.length)];
-                const duration = 800 + Math.random() * 600;
-                
-                // Small delay between sparkles for wave effect
-                setTimeout(() => {
-                    createSparkle(centerX, centerY, vx, vy, size, color, duration);
-                }, Math.random() * 50);
-            }
-        }
-
-        function createBallBurst() {
-            const centerX = window.innerWidth / 2;
-            const centerY = window.innerHeight / 2;
-            
-            // Create multiple balls that burst outward
-            const ballCount = 8;
-            
-            for (let b = 0; b < ballCount; b++) {
-                const ballAngle = (Math.PI * 2 * b) / ballCount;
-                const ballSpeed = 10;
-                const ballVX = Math.cos(ballAngle) * ballSpeed;
-                const ballVY = Math.sin(ballAngle) * ballSpeed;
-                
-                // Each ball contains multiple sparkles
-                const sparklesPerBall = 30;
-                
-                for (let i = 0; i < sparklesPerBall; i++) {
-                    const angle = Math.random() * Math.PI * 2;
-                    const spreadSpeed = 5 + Math.random() * 8;
-                    const vx = ballVX + Math.cos(angle) * spreadSpeed;
-                    const vy = ballVY + Math.sin(angle) * spreadSpeed;
-                    
-                    const size = 2 + Math.random() * 5;
-                    const color = colors[Math.floor(Math.random() * colors.length)];
-                    const duration = 900 + Math.random() * 700;
-                    
-                    setTimeout(() => {
-                        createSparkle(centerX, centerY, vx, vy, size, color, duration);
-                    }, b * 30 + Math.random() * 50);
+            // ---- Mini burst at end ----
+            setTimeout(() => {
+                for (let i = 0; i < 18; i++) {
+                    const a = Math.random() * Math.PI * 2;
+                    const spd = 1 + Math.random() * 6;
+                    const sx = x + (Math.random() - 0.5) * 12;
+                    const sy = y + (Math.random() - 0.5) * 12;
+                    createSparkle(sx, sy, Math.cos(a) * spd, Math.sin(a) * spd,
+                        2 + Math.random() * 5, COLORS[Math.floor(Math.random() * COLORS.length)], 500);
                 }
+            }, duration * 0.8);
+        }
+
+        // ========== SPARKLE ==========
+        function createSparkle(x, y, vx, vy, size, color, duration) {
+            const el = document.createElement('div');
+            el.className = 'sparkle-particle';
+            el.style.width = size + 'px';
+            el.style.height = size + 'px';
+            el.style.background = color;
+            el.style.boxShadow = `0 0 ${size * 3}px ${color}`;
+            el.style.left = x + 'px';
+            el.style.top = y + 'px';
+            document.body.appendChild(el);
+
+            let cx = x, cy = y;
+            let cvx = vx, cvy = vy;
+            const start = Date.now();
+
+            function anim() {
+                const elapsed = Date.now() - start;
+                if (elapsed > duration) { el.remove(); return; }
+                cvx *= 0.98;
+                cvy *= 0.98;
+                cvy += 0.04;
+                cx += cvx;
+                cy += cvy;
+                el.style.left = cx + 'px';
+                el.style.top = cy + 'px';
+                el.style.opacity = 1 - elapsed / duration;
+                el.style.transform = `scale(${1 + elapsed / duration * 1.5})`;
+                requestAnimationFrame(anim);
+            }
+            anim();
+        }
+
+        // ========== LAUNCH WAVES ==========
+        function launchWave(count) {
+            count = count || 6 + Math.floor(Math.random() * 10);
+            for (let i = 0; i < count; i++) {
+                setTimeout(() => {
+                    createShootingStar();
+                }, i * 100 + Math.random() * 80);
             }
         }
 
-        // Create bursts continuously
-        setInterval(() => {
-            if (Math.random() > 0.5) {
-                createBurst();
-            } else {
-                createBallBurst();
-            }
-        }, 600);
+        function launchBigWave() {
+            // multiple waves in quick succession
+            launchWave(12);
+            setTimeout(() => launchWave(8), 400);
+            setTimeout(() => launchWave(6), 800);
+        }
 
+        // ========== START ==========
         // Initial burst
-        createBurst();
-        setTimeout(() => createBallBurst(), 300);
+        setTimeout(() => launchBigWave(), 200);
+        setTimeout(() => launchWave(10), 800);
+        setTimeout(() => launchWave(8), 1500);
+
+        // Continuous
+        setInterval(() => {
+            launchWave(4 + Math.floor(Math.random() * 6));
+        }, 700);
+
+        // Big waves periodically
+        setInterval(() => {
+            if (Math.random() > 0.6) launchBigWave();
+        }, 4000);
+
+        // Random extra stars
+        setInterval(() => {
+            if (Math.random() > 0.5) createShootingStar();
+        }, 300);
     </script>
 </body>
 </html>
