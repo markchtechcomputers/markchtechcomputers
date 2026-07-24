@@ -1,7 +1,7 @@
 <!-- markchtechcomputers/README.md -->
 
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:FFD700,100:FF4500&height=180&section=header&text=manlung™&fontSize=60&fontColor=fff&animation=twinkling" width="100%" />
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:FFD700,100:FF4500&height=200&section=header&text=manlung™&fontSize=60&fontColor=fff&animation=twinkling&desc=Tech%20Architect%20%7C%20Full-Stack%20Developer&descSize=20&descAlignY=75" width="100%" />
 </p>
 
 <h1 align="center">
@@ -193,9 +193,9 @@
 <br>
 
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:FF4500,100:FFD700&height=120&section=footer" width="100%" />
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:FF4500,100:FFD700&height=150&section=footer&text=🚀%20manlung™&fontSize=30&fontColor=fff&animation=twinkling" width="100%" />
 </p>
 
 <p align="center">
-  <i>“Building the digital future — one commit at a time.”</i> 🚀
+  <i>“Building the digital future — one commit at a time.”</i> 🌟
 </p>
