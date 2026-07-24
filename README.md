@@ -16,7 +16,9 @@
 </h3>
 
 <p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&duration=3000&pause=1000&color=FFD700&center=true&vCenter=true&width=600&lines=Building+the+future%2C+one+line+at+a+time;Full‑Stack+%7C+Cloud+%7C+AI+Enthusiast;Scalable+systems+%26+clean+code" alt="Typing SVG" />
+  <strong style="color:#FFD700; font-size:20px;">
+    Building the future, one line at a time &nbsp;|&nbsp; Full‑Stack · Cloud · AI Enthusiast
+  </strong>
 </p>
 
 <br>
