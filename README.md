@@ -17,7 +17,7 @@
 
 <p align="center">
   <strong style="color:#FFD700; font-size:20px;">
-    Building the future, one line at a time &nbsp;|&nbsp; Full‑Stack · Cloud · AI Enthusiast
+    🚀 Building the future, one line at a time &nbsp;|&nbsp; Full‑Stack · Cloud · AI Enthusiast
   </strong>
 </p>
 
@@ -41,7 +41,9 @@
       </p>
     </td>
     <td width="40%" align="center">
-      <img src="https://github-readme-stats.vercel.app/api?username=markchtechcomputers&show_icons=true&theme=radical&hide_border=true&bg_color=0D1117&title_color=FFD700&icon_color=FF4500" width="100%" />
+      <img src="https://ui-avatars.com/api/?name=M&size=200&background=FFD700&color=000&font-size=80&bold=true&rounded=true" width="180" height="180" alt="M" />
+      <br>
+      <em style="color:#FFD700;">manlung™</em>
     </td>
   </tr>
 </table>
